@@ -3,46 +3,48 @@
 ![Werewolf Intelligent Agent Framework](graph.png)
 
 
-The framework process is as follows
+1.    初始化游戏（节点）init_game
 
+2.    开始游戏（节点）start_game
+  -  2.1 判断游戏是否结束
+  -  2.2 判断当前是白天还是黑夜
 
-1. Initialize the game (node)
+3.  夜晚，进入 wolf_node 狼人（节点）
+  -  3.1 如果预言家存在，狼人（节点） -> 预言家（节点）
+  -  3.2 如果预言家不存在且女巫存在且女巫有技能，狼人（节点） -> 女巫（节点）
+  -  3.3 如果以上条件均不满足，狼人（节点） -> 夜晚总结（节点）
 
+4.  预言家 （节点）seer_node
 
-2. Start the game (node)
+  -  施放技能获取玩家信息（向发牌员询问）
 
+  -  发牌员提供信息
 
-2.1 Determine if the game has ended
+  -  预言家接收信息
 
-
-2.2 Determine if it is day or night
-
-
-3. Night, enter the Werewolf (node)
-
-
-3.1 If the Seer exists, Werewolf (node) -> Seer (node)
-
-
-3.2 If the seer does not exist and the witch exists and the witch has skills, Werewolf (node) -> Witch (node)
-
-
-3.3. If none of the above conditions are met, Werewolf (node) -> Night Summary (node)
-
-
-4. Seer (node)
-
-
-Cast a skill to obtain player information (ask the dealer)
-
-
-Dealer informs information
-
-
-Seer receives information
-
-
-4.1 The Witch exists and the Witch has skills  Seer (node) -> Witch (node)
-
-
-4.2 The above is not valid
+  -  4.1 如果女巫存在且女巫有技能，预言家（节点） -> 女巫（节点）
+  -  4.2 如果以上条件均不满足， 预言家（节点）-> 夜晚总结（节点）
+5.   女巫（节点）witch_node
+  -   是否发动毒药/解药技能
+  -   女巫（节点）->黑夜总结（节点）
+5.   黑夜总结（节点）
+    -  总结夜晚发生的情况
+    -  出局的玩家发表遗言
+    -  切换到白天
+     -  黑夜总结（节点）->开始游戏（节点） 
+6.   再次回到  开始游戏（节点） start_game
+    -   判断游戏是否结束
+    -   判断当前是白天还是黑夜
+7.   白天讨论（节点） light_discussion
+  -  存活玩家发表意见
+  -  白天讨论（节点） ->白天总结 （节点
+8.  白天总结 （节点） light_over
+  -   存活玩家投票
+  -   出局玩家发表遗言
+  -   切换到黑夜
+  -   白天总结 （节点）->开始游戏（节点）
+10.  开始游戏（节点）
+  -  判断游戏是否结束
+  -  判断当前是白天还是黑夜’
+11. 游戏结束（节点） game_over
+  game_over->END
