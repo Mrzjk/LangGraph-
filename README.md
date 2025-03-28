@@ -1,4 +1,4 @@
-
+讲解视频:【狼人杀多智能体】 https://www.bilibili.com/video/BV1XUoQYnEc3/?share_source=copy_web&vd_source=6c3ca3e6cc35fdda786545d7af8b1a78
 
 ![Werewolf Intelligent Agent Framework](graph.png)
 
